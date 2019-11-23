@@ -1,4 +1,4 @@
-# unmute
+# unmute.js
 Enables web audio playback with the ios mute switch on
 
 unmute is a disgusting hack that helps..
