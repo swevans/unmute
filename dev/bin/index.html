@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5">
+		<title>unmute.js Test Page</title>
+
+		<script src="unmute.js"></script>
+	</head>
+	<body>
+		<button id="btn" style="display: none">Play Track</button>
+		<div id="loading">Loading. Please wait..</div>
+		<div id="err" style="display: none"></div>
+
+
+
+		<script>
+			let context = new (window.AudioContext || window.webkitAudioContext)();
+			unmute(context);
+
+			let source;
+
+			function decodeAudioData_success(audioBuffer)
+			{
+				source = context.createBufferSource();
+				source.buffer = audioBuffer;
+				source.connect(context.destination);
+				source.loop = true;
+
+				document.getElementById("loading").style.display = "none";
+				document.getElementById("btn").onclick = play;
+				document.getElementById("btn").style.removeProperty("display");
+			}
+
+			function decodeAudioData_error(error)
+			{
+				console.log("error decoding audio data", error);
+				document.getElementById("err").style.removeProperty("display");
+				document.getElementById("err").innerHTML = "Error decoding mp3";
+			}
+
+			let xhr = new XMLHttpRequest();
+			xhr.open("GET", "test.mp3");
+			xhr.responseType = "arraybuffer";
+			xhr.onload = function()
+			{
+				let promise = context.decodeAudioData(xhr.response, decodeAudioData_success, decodeAudioData_error);
+				if (promise) promise.then(decodeAudioData_success, decodeAudioData_error).catch(decodeAudioData_error);
+			}
+			xhr.onerror = xhr.onabort = function()
+			{
+				document.getElementById("err").style.removeProperty("display");
+				document.getElementById("err").innerHTML = "Error loading mp3";
+			}
+			xhr.send();
+
+			function play()
+			{
+				if (source)
+				{
+					source.start();
+					document.getElementById("btn").style.display = "none";
+					document.getElementById("loading").innerHTML = "Audio should be playing. If you're on ios it should playing even with the mute switch on AND you should not see a media playback widget. It should pause if you switch tabs / minimize the window / lock the device and resume when you return to it. Enjoy.";
+					document.getElementById("loading").style.removeProperty("display");
+				}
+			}
+		</script>
+
+	</body>
+</html>

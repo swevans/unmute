@@ -1,0 +1,243 @@
+/** @file tslint.json
+ * Must be at the root of the framework.
+ * Projects should extend this in their own tslint.json
+ */
+{
+	"rules":
+	{
+		// https://palantir.github.io/tslint/rules/no-inferrable-types/
+		"no-inferrable-types": false,
+
+		// https://palantir.github.io/tslint/rules/adjacent-overload-signatures/
+		"adjacent-overload-signatures": true,	//?
+
+		// https://palantir.github.io/tslint/rules/adjacent-overload-signatures/
+		"ban-types": [true, ["String"], ["Number"], ["Boolean"]],
+
+		// https://palantir.github.io/tslint/rules/member-access/
+		"member-access": [true, "check-accessor", "check-constructor", "check-parameter-property"],
+
+		// https://palantir.github.io/tslint/rules/no-any/
+		//"no-any": true,
+
+		// https://palantir.github.io/tslint/rules/no-empty-interface/
+		//"no-empty-interface": true,
+
+		// https://palantir.github.io/tslint/rules/no-internal-module/
+		"no-internal-module": true,
+
+		// Requires type info
+		// https://palantir.github.io/tslint/rules/promise-function-async/
+		"promise-function-async": true,
+
+		// https://palantir.github.io/tslint/rules/typedef/
+		"typedef": [true, 
+			"call-signature",
+			"arrow-call-signature",
+			"parameter",
+			"arrow-parameter",
+			"property-declaration",
+			"variable-declaration",
+			"member-variable-declaration",
+			"object-destructuring",
+			"array-destructuring"
+		],
+
+		// https://palantir.github.io/tslint/rules/typedef-whitespace/
+		"typedef-whitespace": [
+			true,
+			{
+				"call-signature": "nospace",
+				"index-signature": "nospace",
+				"parameter": "nospace",
+				"property-declaration": "nospace",
+				"variable-declaration": "nospace"
+			},
+			{
+				"call-signature": "nospace",
+				"index-signature": "nospace",
+				"parameter": "nospace",
+				"property-declaration": "nospace",
+				"variable-declaration": "nospace"
+			}
+		],
+
+		// https://palantir.github.io/tslint/rules/ban-comma-operator/
+		"ban-comma-operator": true,
+
+		// https://palantir.github.io/tslint/rules/ban/
+		"ban": [
+			true,
+			"eval",
+			{"name": "$", "message": "please don't"},
+			["describe", "only"],
+			{"name": ["it", "only"], "message": "don't focus tests"},
+			{
+				"name": ["chai", "assert", "equal"],
+				"message": "Use 'strictEqual' instead."
+			},
+			{"name": ["*", "forEach"], "message": "Use a regular for loop instead."}
+		],
+
+		// https://palantir.github.io/tslint/rules/no-conditional-assignment/
+		"no-conditional-assignment": true,
+
+		// https://palantir.github.io/tslint/rules/no-construct/
+		"no-construct": true,
+
+		// https://palantir.github.io/tslint/rules/no-duplicate-super/
+		"no-duplicate-super": true,
+
+		// https://palantir.github.io/tslint/rules/no-duplicate-variable/
+		"no-duplicate-variable": [true, "check-parameters"],
+
+		// https://palantir.github.io/tslint/rules/no-eval/
+		"no-eval": true,
+
+		// https://palantir.github.io/tslint/rules/no-floating-promises/
+		"no-floating-promises": true,
+
+		// https://palantir.github.io/tslint/rules/no-for-in-array/
+		"no-for-in-array": true,
+
+		// https://palantir.github.io/tslint/rules/no-invalid-this/
+		"no-invalid-this": [true, "check-function-in-method"],
+
+		// https://palantir.github.io/tslint/rules/no-shadowed-variable/
+		"no-shadowed-variable": [
+			true,
+			{
+				"class": false,
+				"enum": true,
+				"function": true,
+				"interface": false,
+				"namespace": true,
+				"typeAlias": false,
+				"typeParameter": false
+			}
+		],
+
+		// https://palantir.github.io/tslint/rules/no-unbound-method/
+		//"no-unbound-method": true,
+
+		// https://palantir.github.io/tslint/rules/no-unsafe-any/
+		//"no-unsafe-any": true,
+
+		// https://palantir.github.io/tslint/rules/no-unused-variable/
+		"no-unused-variable": true,
+
+		// https://palantir.github.io/tslint/rules/no-var-keyword/
+		"no-var-keyword": { "severity": "warn" },
+
+		// Requires type info... slow to compute... move away from var
+		// https://palantir.github.io/tslint/rules/no-use-before-declare/
+		//"no-use-before-declare": true,
+
+		// https://palantir.github.io/tslint/rules/radix/
+		"radix": true,
+
+		// https://palantir.github.io/tslint/rules/triple-equals/
+		"triple-equals": false,
+
+		// https://palantir.github.io/tslint/rules/typeof-compare/
+		//"typeof-compare": true, DEPRECATED
+
+		// https://palantir.github.io/tslint/rules/use-isnan/
+		"use-isnan": true,
+
+		// "deprecation": true
+		"deprecation": true,
+
+		// https://palantir.github.io/tslint/rules/eofline/
+		"eofline": true,
+
+		// https://palantir.github.io/tslint/rules/indent/
+		"indent": [true, "tabs"],
+
+		// https://palantir.github.io/tslint/rules/no-require-imports/
+		"no-require-imports": true,
+
+		// https://palantir.github.io/tslint/rules/prefer-readonly/
+		"prefer-readonly": {"severity":"warning"},
+
+		// https://palantir.github.io/tslint/rules/trailing-comma/
+		"trailing-comma": [true, {"multiline": "never", "singleline": "never"}],
+
+		// https://palantir.github.io/tslint/rules/array-type/
+		"array-type": [true, "array"],
+
+		// https://palantir.github.io/tslint/rules/class-name/
+		"class-name": true,
+
+		// https://palantir.github.io/tslint/rules/comment-format/
+		"comment-format": {"severity":"warning"},
+
+		// https://palantir.github.io/tslint/rules/no-console/
+		"no-console": {"severity":"warning"},
+
+		
+
+		
+		// https://palantir.github.io/tslint/rules/encoding/
+		"encoding": true,
+
+		// https://palantir.github.io/tslint/rules/file-header/
+		"file-header": [true, "@file"],
+
+		// https://palantir.github.io/tslint/rules/interface-over-type-literal/
+		"interface-over-type-literal": false,
+
+		// https://palantir.github.io/tslint/rules/jsdoc-format/
+		"jsdoc-format": true,
+
+		// https://palantir.github.io/tslint/rules/new-parens/
+		"new-parens": true,
+
+		// https://palantir.github.io/tslint/rules/no-parameter-properties/
+		"no-parameter-properties": true,
+
+		// https://palantir.github.io/tslint/rules/no-redundant-jsdoc/
+		"no-redundant-jsdoc": false,
+
+		// https://palantir.github.io/tslint/rules/no-trailing-whitespace/
+		"no-trailing-whitespace": [true, "ignore-blank-lines", "ignore-comments"],
+
+		// https://palantir.github.io/tslint/rules/no-unnecessary-initializer/
+		"no-unnecessary-initializer": true,
+
+		// https://palantir.github.io/tslint/rules/no-unnecessary-qualifier/
+		//"no-unnecessary-qualifier": true,
+
+		// https://palantir.github.io/tslint/rules/object-literal-shorthand/
+		"object-literal-shorthand": [true, "never"],
+		
+		// https://palantir.github.io/tslint/rules/prefer-method-signature/
+		"prefer-method-signature": true,
+
+		// https://palantir.github.io/tslint/rules/quotemark/
+		"quotemark": [true, "double"],
+
+		// https://palantir.github.io/tslint/rules/semicolon/
+		"semicolon": [true, "always"],
+
+		// https://palantir.github.io/tslint/rules/space-before-function-paren/
+		"space-before-function-paren": [true, "never"],
+
+		// https://palantir.github.io/tslint/rules/variable-name/
+		"variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore", "allow-pascal-case"],
+
+		// https://palantir.github.io/tslint/rules/whitespace/
+		"whitespace": [ true,
+			"check-branch",
+			"check-decl",
+			"check-operator",
+			"check-module",
+			"check-separator",
+			"check-rest-spread",
+			//"check-type",
+			//"check-typecast",
+			"check-type-operator",
+			"check-preblock"
+		]
+	}
+}

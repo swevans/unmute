@@ -1,0 +1,16 @@
+{
+  "name": "iosunmute",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "tslint": "^5.20.1",
+    "typescript": "^3.7.2",
+    "uglify-js": "^3.6.9"
+  }
+}

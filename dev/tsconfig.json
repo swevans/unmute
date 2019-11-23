@@ -1,0 +1,51 @@
+{
+	"files": [
+		"src/unmute.ts"
+	],
+
+	"include": [],
+
+	"compilerOptions":
+	{
+		"outFile": "bin/unmute.js",
+
+		// Compiler Rules
+		"strictNullChecks": false,					// Leave false, prevents us from using null, not ideal
+		"strictPropertyInitialization": false,		// Leave false, requires strict null checks to be true, but using this would be ideal because javascript runs way faster if all class properties are initialized to SOME value or null on construction
+		"alwaysStrict": true,						// Should be true, enforces "use strict" which gives a performance boost
+		"strictBindCallApply": true,				// Should be true, don't blindly call these
+		"noStrictGenericChecks": false,				// Should be false, use generics tightly
+		"allowUnusedLabels": false,					// Should be false, also don't ever use labels!
+		"noImplicitThis": false,					// Shoud be false, allow implicit this so this can be used in parameter defaults
+		"noImplicitAny": true,						// Should be true, any is gross anyways
+		"noImplicitReturns": true,					// Should be true, implicit returns are the worst thing ever in javascript!
+		"noFallthroughCasesInSwitch": true,			// Should be true, also don't ever use switch statements anyways
+		"forceConsistentCasingInFileNames": true,	// Should be true, doesn't seem to work, but forces check that file ref names are cased the same
+		"strictFunctionTypes": false,				// Should be false, this allows us to have extended classes in handler params
+		"noUnusedLocals": false,					// Optional
+		"noUnusedParameters": false,				// Optional
+		"allowUnreachableCode": true,				// Optional
+		"preserveConstEnums": false,				// Optional
+
+		// Debug
+		"diagnostics": false,						// Optional, traces metrics about compilation time / memory / objects
+		"extendedDiagnostics": false,				// Optional, traces extra metrics about compilation time / memory / objects
+		"listEmittedFiles": false,					// Optional, traces files that needed to be updated during the compilation
+		"listFiles": false,							// Optional, traces emitted files to check what was recompiled
+		"traceResolution": false,					// Should be false, don't think this applies when not using a module import system
+		"pretty": true,								// Should be true, allows tsc console output formatting, useful for clicking errors
+
+		// Compiler Options
+		"target": "ES5",							// Leave as es5, es6 and greater actually generates less performant code
+		"skipLibCheck": true,						// Should be true, skip checking *.d.ts files, Speeds up compilation
+		"incremental": false,						// Should be true for game code, note that outFile breaks incremental
+		"noEmitOnError": true,						// Should be true, don't bother emitting if there is broken code
+		"removeComments": false,					// Should be set to false, don't bother since they are stripped in minification
+		"allowJs": false,							// Should be set to false, javascript is gross
+		"newLine": "LF",							// Use Unix style line endings
+		"noEmitHelpers": true,						// Leave as false, we generate these on our own
+		"declaration": false,						// Don't emit declarations in most cases
+		"lib": ["es5", "dom"],						// Don't use extended libraries
+		"types": []									// Ignore types in node_modules/@[type]
+	}
+}

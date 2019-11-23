@@ -1,0 +1,130 @@
+{
+	"folders": [
+		{
+			"name": "unmute",
+			"path": "."
+		}
+	],
+	"settings": {
+
+		// Project Settings
+		"window.title": "${dirty}${rootName}: ${activeEditorShort}${separator}${separator}${folderPath}",
+
+		// General IDE Settings
+		"editor.insertSpaces": false,
+		"editor.wordWrapColumn": 9000,
+		"editor.wordWrap": "off",
+		"editor.renderWhitespace": "all",
+		"editor.fontFamily": "Consolas",
+		"editor.fontSize": 14,
+		"editor.folding": true,
+		"editor.autoIndent": false,
+		"editor.formatOnSave": false,
+		"editor.formatOnPaste": false,
+		"editor.formatOnType": false,
+		"editor.acceptSuggestionOnCommitCharacter": false,
+		"editor.colorDecorators": false,
+
+		// Other Language Settings
+		"json.format.enable": false,
+		"html.format.enable": false,
+
+		// Javascript Settings
+		"javascript.preferences.quoteStyle": "double",
+		"javascript.suggest.names": false,
+		"javascript.format.enable": false,
+		"javascript.validate.enable": true,
+
+		// Typescript Settings
+		"typescript.preferences.quoteStyle": "double",
+		"typescript.suggest.autoImports": false,
+		"typescript.tsc.autoDetect": "off",
+		"typescript.format.enable": false,
+		"typescript.tsdk": "node_modules\\typescript\\lib",			// Always use local typescript
+		"typescript.format.insertSpaceAfterCommaDelimiter": true,
+		"typescript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
+		"typescript.format.insertSpaceAfterKeywordsInControlFlowStatements": true,
+		"typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": false,
+		"typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": false,
+		"typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": false,
+		"typescript.format.insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces": false,
+		"typescript.format.insertSpaceAfterSemicolonInForStatements": true,
+		"typescript.format.insertSpaceBeforeAndAfterBinaryOperators": true,
+		"typescript.format.insertSpaceBeforeFunctionParenthesis": false,
+		"typescript.format.placeOpenBraceOnNewLineForControlBlocks": true,
+		"typescript.format.placeOpenBraceOnNewLineForFunctions": true,
+		"typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+		"typescript.format.insertSpaceAfterConstructor": false,
+		"typescript.format.insertSpaceAfterTypeAssertion": false,
+
+		"[markdown]": {
+			"editor.wordWrap": "off"
+		},
+
+		// TSLint Settings
+		"tslint.alwaysShowRuleFailuresAsWarnings": false,
+		//"tslint.configFile": "tslint.json",		// Don't specify so it uses the nearest tslint file
+		"tslint.jsEnable": false,
+		"tslint.suppressWhileTypeErrorsPresent": false,
+		"tslint.ignoreDefinitionFiles": true,
+		"tslint.exclude": ["**/bin/*.*"],
+
+		// CSS Settings
+		"css.lint.propertyIgnoredDueToDisplay": "ignore",
+		"css.lint.emptyRules": "ignore",
+
+		// Terminal Settings
+		"terminal.integrated.cursorBlinking": true,
+		"terminal.integrated.cursorStyle": "line",
+		"terminal.integrated.cwd": "./",
+		"terminal.integrated.fontSize": 12,
+
+		// Telemetry Settings
+		"telemetry.enableCrashReporter": false,		// Enable crash reports to be sent to a Microsoft online service.
+		"telemetry.enableTelemetry": false,			// Enable usage data and errors to be sent to a Microsoft online service.
+
+		// NPM Settings
+		"npm.autoDetect": "off",
+
+		// Reference Settings
+		"references.preferredLocation": "view",		// Show in side bar
+
+		// Gulp Settings
+		"gulp.autoDetect": "on",
+
+		// Explorer Settings
+		"files.exclude": {
+			"**/.git": true,
+			"**/.svn": true,
+			"**/.hg": true,
+			"**/CVS": true,
+			"**/.DS_Store": true,
+			"**/node_modules": true,
+			"**/package-lock.json": true
+		},
+
+		// Watcher Settings
+		// Configure glob patterns of file paths to exclude from file watching.
+		// Patterns must match on absolute paths (i.e. prefix with ** or the full path to match properly).
+		// Changing this setting requires a restart. When you experience Code consuming lots of cpu time on startup,
+		// you can exclude large folders to reduce the initial load.
+		"files.watcherExclude": {
+			"**/.git/**/*.*": true,
+			"**/node_modules/**/*.*": true,
+			"bin/**/*.*": true,
+			".obj/**/*.*": true
+		},
+
+		// File Associations
+		"files.associations": {
+			"tslint.json": "jsonc",					// Forces tslint.json to be parsed as a jsonc
+			"tsconfig.json": "jsonc",
+			"*.tsconfig.json": "jsonc",
+			"tsconfig.*.json": "jsonc",
+			"project.json": "jsonc",
+			"*.ttf.json": "jsonc",
+			"*.tsbuildinfo": "jsonc"
+		},
+		"typescript.surveys.enabled": false
+	}
+}
