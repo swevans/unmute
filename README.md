@@ -16,3 +16,9 @@ Automatic pausing when the page is hidden is supported by both the page visibili
 This is all really gross and apple should really fix their janky browser. This code isn't optimized in any fashion, it is just whipped up to help someone out on stack overflow, its just meant as an example.
 
 Enjoy this gross hack.
+
+## Usage
+Load the unmute.js or unmute.min.js script.
+After it is loaded and you've created a web audio context, call unmute(myContext); to enable unmute.
+
+Give it a run in your favorite janky ios browser, safari. Let the track load and hit play. Audio should be playing. It should pause if you switch tabs / minimize the window / lock the device and resume when you return to it. If you're on ios it should playing even with the mute switch on AND you should not see a media playback widget. Enjoy.
