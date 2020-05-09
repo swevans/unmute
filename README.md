@@ -26,3 +26,18 @@ Give it a run in your favorite janky ios browser, safari. Let the track load and
 - Load the unmute.js or unmute.min.js script.
 - After it is loaded and you've created a web audio context, call unmute(myContext); to enable unmute.
 - Play tracks using the context like you normally would.
+
+```javascript
+// Create an audio context instance if WebAudio is supported
+let context = (window.AudioContext || window.webkitAudioContext) ?
+  new (window.AudioContext || window.webkitAudioContext)() : null;
+// Pass it to unmute if the context exists... ie WebAudio is supported
+if (context) unmute(context);
+```
+
+## Troubleshooting
+- If you run into errors creating an AudioContext, you might be using a browser that doesn't support WebAudio (Thanks Internet Explorer!). See: https://caniuse.com/#feat=audio-api
+- If unmute is throwing errors, there is a strong chance that something other than a real instance of AudioContext was passed to unmute. 
+    - Are you using any other audio frameworks? They often wrap the AudioContext with their own version of it. That won't work. unmute needs the real mccoy. Check the other audio framework to see if that is the case. They probably offer some method of getting the real context.
+    - Are you using a polyfill for AudioContext? If so, it better be the real thing! Polyfilling with an empty function will not work.
+    - Are you using a polyfill framework? If so, you'll need to check that WebAudio is actually supported and not being polyfilled with an empty function.
