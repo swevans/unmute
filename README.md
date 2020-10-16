@@ -15,7 +15,9 @@ Automatic pausing when the page is hidden is supported by both the page visibili
  
 This is all really gross and apple should really fix their janky browser. This code isn't optimized in any fashion, it is just whipped up to help someone out on stack overflow, its just meant as an example.
 
-Enjoy this gross hack.
+Enjoy this gross hack. If you like it, you're welcome to buy me a coffee :)
+
+<a href="https://www.buymeacoffee.com/sevans" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
 
 ## Demo
 See: https://spencer-evans.com/share/github/unmute/
