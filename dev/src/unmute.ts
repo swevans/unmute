@@ -29,7 +29,12 @@ function unmute(context:AudioContext):void
 
 	// Determine if ios
 	let ua:string = navigator.userAgent.toLowerCase();
-	let isIOS:boolean = (ua.indexOf("iphone") >= 0 && ua.indexOf("like iphone") < 0 || ua.indexOf("ipad") >= 0 && ua.indexOf("like ipad") < 0 || ua.indexOf("ipod") >= 0 && ua.indexOf("like ipod") < 0);
+	let isIOS:boolean = (
+		(ua.indexOf("iphone") >= 0 && ua.indexOf("like iphone") < 0) ||
+		(ua.indexOf("ipad") >= 0 && ua.indexOf("like ipad") < 0) ||
+		(ua.indexOf("ipod") >= 0 && ua.indexOf("like ipod") < 0) ||
+		(ua.indexOf("mac os x") >= 0 && navigator.maxTouchPoints > 0)		// New ipads show up as macs in user agent, but they have a touch screen
+	);
 
 	// Track page state
 	let isPageActive:boolean = true;
@@ -328,5 +333,5 @@ function unmute(context:AudioContext):void
 		window.addEventListener("blur", win_focusChange, true);
 	}
 	doc_visChange();
-	win_focusChange();
+	if (isIOS) win_focusChange();
 }

@@ -29,7 +29,11 @@ function unmute(context) {
         pageVisibilityAPI = { hidden: "msHidden", visibilitychange: "msvisibilitychange" };
     // Determine if ios
     var ua = navigator.userAgent.toLowerCase();
-    var isIOS = (ua.indexOf("iphone") >= 0 && ua.indexOf("like iphone") < 0 || ua.indexOf("ipad") >= 0 && ua.indexOf("like ipad") < 0 || ua.indexOf("ipod") >= 0 && ua.indexOf("like ipod") < 0);
+    var isIOS = ((ua.indexOf("iphone") >= 0 && ua.indexOf("like iphone") < 0) ||
+        (ua.indexOf("ipad") >= 0 && ua.indexOf("like ipad") < 0) ||
+        (ua.indexOf("ipod") >= 0 && ua.indexOf("like ipod") < 0) ||
+        (ua.indexOf("mac os x") >= 0 && navigator.maxTouchPoints > 0) // New ipads show up as macs in user agent, but they have a touch screen
+    );
     // Track page state
     var isPageActive = true;
     var isPageVisible = true;
@@ -264,5 +268,6 @@ function unmute(context) {
         window.addEventListener("blur", win_focusChange, true);
     }
     doc_visChange();
-    win_focusChange();
+    if (isIOS)
+        win_focusChange();
 }
