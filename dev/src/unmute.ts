@@ -219,8 +219,11 @@ function unmute(context:AudioContext, allowBackgroundPlayback:boolean = false, f
 					}
 
 					// Play the channel tag
-					let p:Promise<void> = channelTag.play();
-					if (p) p.then(noop, destroyChannelTag).catch(destroyChannelTag);			// If playback fails the tag is pretty much trash and needs to be recreated on next media playback event
+					if (channelTag.paused)
+					{
+						let p:Promise<void> = channelTag.play();
+						if (p) p.then(noop, destroyChannelTag).catch(destroyChannelTag);			// If playback fails the tag is pretty much trash and needs to be recreated on next media playback event
+					}
 				}
 			}
 			else

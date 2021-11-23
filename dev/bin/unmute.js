@@ -192,9 +192,11 @@ function unmute(context, allowBackgroundPlayback, forceIOSBehavior) {
                         channelTag.load();
                     }
                     // Play the channel tag
-                    var p = channelTag.play();
-                    if (p)
-                        p.then(noop, destroyChannelTag).catch(destroyChannelTag); // If playback fails the tag is pretty much trash and needs to be recreated on next media playback event
+                    if (channelTag.paused) {
+                        var p = channelTag.play();
+                        if (p)
+                            p.then(noop, destroyChannelTag).catch(destroyChannelTag); // If playback fails the tag is pretty much trash and needs to be recreated on next media playback event
+                    }
                 }
             }
             else {
