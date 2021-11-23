@@ -2,18 +2,33 @@
 Enables web audio playback with the ios mute switch on
 
 unmute is a disgusting hack that helps..
-  1) automatically resume web audio contexts on user interaction
-  2) ios only: web audio play on the media channel rather than the ringer channel
-  3) ios only: disable the media playback widget and airplay.
-  4) automatically pause and resume web audio when the page is hidden.
- 
-Auto resuming works by checking context state and calling resume during any resumable event.
- 
-Media channel playback and media widget disabling work by playing an airplay-disabled silent html audio track in the background.
- 
-Automatic pausing when the page is hidden is supported by both the page visibility api AND blur events because ios has a poor implementation of the page visibility api.
- 
-This is all really gross and apple should really fix their janky browser. This code isn't optimized in any fashion, it is just whipped up to help someone out on stack overflow, its just meant as an example.
+	1. automatically resume web audio contexts on user interaction
+	2. automatically pause and resume web audio when the page is hidden.
+	3. ios only: web audio play on the media channel rather than the ringer channel
+	4. ios only: disable the media playback widget and airplay when:
+
+WebAudio is automatically resumed by checking context state and resuming whenever possible.
+
+WebAudio pausing is accomplished by watching the page visilibility API. When on iOS, page focus
+is also used to determine if the page is in the foreground because Apple's page vis api implementation is buggy.
+
+iOS Only: Forcing WebAudio onto the media channel (instead of the ringer channel) works by playing
+a short, high-quality, silent html audio track continuously when web audio is playing.
+
+iOS Only: Hiding the media playback widgets on iOS is accomplished by completely nuking the silent
+html audio track whenever the app isn't in the foreground.
+
+iOS detection is done by looking at the user agent for iPhone, iPod, iPad. This detects the phones fine, but
+apple likes to pretend their new iPads are computers (lol right..). Newer iPads are detected by finding 
+mac osx in the user agent and then checking for touch support by testing navigator.maxTouchPoints > 0.
+
+This code isn't optimized in any fashion, it is just whipped up to help someone out on stack overflow, its just meant as an example.
+
+In an ideal world, Apple would fix their janky browser. In the real world, this is probably *by design* on Apple's part to reduce the capabilities of web apps and push users onto their absurdly profitable and monopolistic app store.
+
+Quirks:
+- The audio channel control may not kick back on immediately. Example: when you begin playback with the mute switch on, switch tabs, then switch back, the audio will be playing, but it will be muted. The user must interact with the page to begin hearing the audio again. This doesn't apply when the allowBackgroundPlayback option is specified.
+- iOS displays audio playback controls on its lockscreen. The default unmute behavior does an excellent job at hiding these from the user. Specifying the allowBackgroundPlayback option will cause these controls to be displayed. There is no way to remove them, even though they don't do anything meaningful.
 
 Enjoy this gross hack. If you like it, you're welcome to buy me a coffee :)
 
@@ -28,13 +43,28 @@ Give it a run in your favorite janky ios browser, safari. Let the track load and
 - Load the unmute.js or unmute.min.js script.
 - After it is loaded and you've created a web audio context, call unmute(myContext); to enable unmute.
 - Play tracks using the context like you normally would.
+- You can optionally specify to allow background playback or force iOS behavior on all devices and browsers, neither is recommended but may be required for some use cases.
 
 ```javascript
 // Create an audio context instance if WebAudio is supported
 let context = (window.AudioContext || window.webkitAudioContext) ?
   new (window.AudioContext || window.webkitAudioContext)() : null;
+  
+// Decide on some parameters
+let allowBackgroundPlayback = false; // default false, recommended false
+let forceIOSBehavior = false; // default false, recommended false
 // Pass it to unmute if the context exists... ie WebAudio is supported
-if (context) unmute(context);
+if (context)
+{
+  // If you need to be able to disable unmute at a later time, you can use the returned handle's dispose() method
+  // if you don't need to do that (most folks won't) then you can simply ignore the return value
+  let unmuteHandle = unmute(context, allowBackgroundPlayback, forceIOSBehavior);
+  
+  // ... at some later point you wish to STOP unmute control
+  unmuteHandle.dispose();
+  unmuteHandle = null;
+  
+}
 ```
 
 ## Troubleshooting
