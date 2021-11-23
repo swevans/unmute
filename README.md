@@ -75,6 +75,10 @@ if (context)
     - Are you using a polyfill framework? If so, you'll need to check that WebAudio is actually supported and not being polyfilled with an empty function.
 
 ## Change Log
+- 11/23/2021
+  - added support for allowBackgroundPlayback and forceIOSBehavior parameters
+  - added support for dispose function
+  - improved logic that hides the native iOS audio controls when the app is in the background
 - 3/24/2021
   - added support for detecting new ipads that use a mac user agent.. this fix may not be entirely necessary, but it works for now
   - fixed bug that prevented chrome from resuming audio when the page is reloaded while in the background
