@@ -18,12 +18,13 @@
 		"editor.fontFamily": "Consolas",
 		"editor.fontSize": 14,
 		"editor.folding": true,
-		"editor.autoIndent": false,
+		"editor.autoIndent": "advanced",
 		"editor.formatOnSave": false,
 		"editor.formatOnPaste": false,
 		"editor.formatOnType": false,
 		"editor.acceptSuggestionOnCommitCharacter": false,
 		"editor.colorDecorators": false,
+		"editor.foldingHighlight": false,
 
 		// Other Language Settings
 		"json.format.enable": false,
@@ -79,18 +80,11 @@
 		"terminal.integrated.cwd": "./",
 		"terminal.integrated.fontSize": 12,
 
-		// Telemetry Settings
-		"telemetry.enableCrashReporter": false,		// Enable crash reports to be sent to a Microsoft online service.
-		"telemetry.enableTelemetry": false,			// Enable usage data and errors to be sent to a Microsoft online service.
-
 		// NPM Settings
 		"npm.autoDetect": "off",
 
 		// Reference Settings
 		"references.preferredLocation": "view",		// Show in side bar
-
-		// Gulp Settings
-		"gulp.autoDetect": "on",
 
 		// Explorer Settings
 		"files.exclude": {
