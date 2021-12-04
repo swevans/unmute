@@ -242,7 +242,7 @@ function unmute(context:AudioContext, allowBackgroundPlayback:boolean = false, f
 		if (channelTag)
 		{
 			// Change src to nothing and trigger a load, this is required to actually hide / clear the iOS playback controls
-			channelTag.src = null;
+			channelTag.src = "about:blank";
 			channelTag.load();
 			channelTag = null;
 		}
